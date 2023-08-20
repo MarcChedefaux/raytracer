@@ -1,7 +1,7 @@
 #ifndef HITOBJECT
 #define HITOBJECT
 
-#include "ray.hpp"
+#include "../raytracing_engine/ray.hpp"
 
 class hit_record
 {
@@ -9,6 +9,9 @@ public:
     point3 p;
     vector3 normal;
     double t;
+    bool front_face;
+
+    void set_face_normal(const ray &r, const vector3 &outward_normal);
 };
 
 class hitObject
