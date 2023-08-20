@@ -1,7 +1,7 @@
 #ifndef RAY
 #define RAY
 
-#include "vector3.hpp"
+#include "../utils/vector3.hpp"
 
 class ray
 {

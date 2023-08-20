@@ -3,9 +3,9 @@
 
 #include <opencv2/opencv.hpp>
 #include <tqdm.hpp>
-#include "camera.hpp"
-#include "vector3.hpp"
-#include "color3.hpp"
+#include "../scenes/camera.hpp"
+#include "../utils/vector3.hpp"
+#include "../utils/color3.hpp"
 #include "ray.hpp"
 
 class engine
