@@ -1,10 +1,12 @@
-cmake_minimum_required(VERSION 2.8)
+cmake_minimum_required(VERSION 3.1)
+
+set (CMAKE_CXX_STANDARD 17)
 
 project( raytracer )
 
 find_package( OpenCV REQUIRED )
 
-include_directories( ${OpenCV_INCLUDE_DIRS} )
+include_directories( ${OpenCV_INCLUDE_DIRS} ./tqdm-cpp/ ./json/single_include/)
 
 add_executable( raytracer main.cpp )
 
