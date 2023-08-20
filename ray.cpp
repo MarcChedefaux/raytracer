@@ -17,3 +17,10 @@ point3 ray::at(double t)
 {
     return orig + t * dir;
 }
+
+std::ostream &operator<<(std::ostream &out, const ray &r)
+{
+    out << "Origin : " << r.orig << std::endl;
+    out << "Direction : " << r.dir << std::endl;
+    return out;
+}

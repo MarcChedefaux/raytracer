@@ -44,3 +44,15 @@ void camera::readJson(std::string filePath)
 
     viewport_ratio = viewport_width / viewport_height;
 }
+
+std::ostream &operator<<(std::ostream &out, const camera &c)
+{
+    out << "Image Width : " << c.image_width << std::endl;
+    out << "Image Height : " << c.image_height << std::endl;
+    out << "Image Aspect Ratio : " << c.aspect_ratio << std::endl;
+    out << "Focal Length : " << c.focal_length << std::endl;
+    out << "Viewport Width : " << c.viewport_width << std::endl;
+    out << "Viewport Height : " << c.viewport_height << std::endl;
+    out << "Viewport Ratio : " << c.viewport_ratio;
+    return out;
+}

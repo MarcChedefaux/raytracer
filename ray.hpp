@@ -17,6 +17,8 @@ public:
     vector3 direction();
 
     point3 at(double t);
+
+    friend std::ostream &operator<<(std::ostream &out, const ray &r);
 };
 
 #endif

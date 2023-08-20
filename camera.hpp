@@ -21,6 +21,8 @@ public:
     camera();
 
     void readJson(std::string filePath);
+
+    friend std::ostream &operator<<(std::ostream &out, const camera &c);
 };
 
 #endif
