@@ -3,17 +3,17 @@
 ray::ray() {}
 ray::ray(const point3 &origin, const vector3 &direction) : orig(origin), dir(direction) {}
 
-point3 ray::origin()
+point3 ray::origin() const
 {
     return orig;
 }
 
-vector3 ray::direction()
+vector3 ray::direction() const
 {
     return dir;
 }
 
-point3 ray::at(double t)
+point3 ray::at(double t) const
 {
     return orig + t * dir;
 }

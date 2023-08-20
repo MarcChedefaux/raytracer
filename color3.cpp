@@ -1,6 +1,7 @@
 #include "color3.hpp"
 
 color3::color3() : vector3() {}
+color3::color3(const vector3 &v) : vector3(v) {}
 color3::color3(double c1, double c2, double c3) : vector3(c1, c2, c3) {}
 
 cv::Vec3b color3::to_cvColor()

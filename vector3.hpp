@@ -12,9 +12,9 @@ public:
     vector3();
     vector3(double e1, double e2, double e3);
 
-    double x();
-    double y();
-    double z();
+    double x() const;
+    double y() const;
+    double z() const;
 
     vector3 operator-();
     double operator[](int i);

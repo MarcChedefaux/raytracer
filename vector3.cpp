@@ -3,15 +3,15 @@
 vector3::vector3() : e{0, 0, 0} {}
 vector3::vector3(double e1, double e2, double e3) : e{e1, e2, e3} {}
 
-double vector3::x()
+double vector3::x() const
 {
     return e[0];
 }
-double vector3::y()
+double vector3::y() const
 {
     return e[1];
 };
-double vector3::z()
+double vector3::z() const
 {
     return e[2];
 }
