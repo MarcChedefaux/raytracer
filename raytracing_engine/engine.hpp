@@ -21,7 +21,7 @@ private:
 
     point3 pixel_sample_square() const;
     ray get_ray(int i, int j) const;
-    color3 ray_color(const ray &r) const;
+    color3 ray_color(const ray &r, int depth) const;
 
 public:
     engine(camera c, scene s);

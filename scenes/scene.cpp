@@ -46,13 +46,27 @@ void scene::readJson(std::string filePath)
     for (json::iterator it = objects.begin(); it != objects.end(); it++)
     {
         json obj = *it;
+        shared_ptr<material> mat;
+        json materialInfo = obj["material"];
+        if (materialInfo["type"] == "lambertian")
+        {
+            color3 albedo(materialInfo["albedo"]["r"], materialInfo["albedo"]["g"], materialInfo["albedo"]["b"]);
+            mat = make_shared<lambertian>(albedo);
+        }
+        if (materialInfo["type"] == "metal")
+        {
+            color3 albedo(materialInfo["albedo"]["r"], materialInfo["albedo"]["g"], materialInfo["albedo"]["b"]);
+            double fuzz = materialInfo["fuzz"];
+            mat = make_shared<metal>(albedo, fuzz);
+        }
+
         if (obj["type"] == "sphere")
         {
             json objPos = obj["center"];
             point3 sphCenter(objPos["x"], objPos["y"], objPos["z"]);
             double sphRadius = obj["radius"];
 
-            add(make_shared<sphere>(sphCenter, sphRadius));
+            add(make_shared<sphere>(sphCenter, sphRadius, mat));
         }
     }
 }

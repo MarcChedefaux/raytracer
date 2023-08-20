@@ -45,6 +45,7 @@ void camera::readJson(std::string filePath)
     viewport_ratio = viewport_width / viewport_height;
 
     samples_per_pixel = data["samples_per_pixel"];
+    max_depth = data["max_depth"];
 }
 
 std::ostream &operator<<(std::ostream &out, const camera &c)

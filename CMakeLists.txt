@@ -15,6 +15,8 @@ utils/vector3.cpp
 utils/interval.cpp
 scenes/camera.cpp 
 scenes/scene.cpp 
+material/lambertian.cpp
+material/metal.cpp
 hitObject/hitObject.cpp
 hitObject/sphere.cpp
 raytracing_engine/ray.cpp

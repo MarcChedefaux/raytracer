@@ -18,16 +18,24 @@ ray engine::get_ray(int i, int j) const
     point3 pixel_center = pixel00_loc + (i * pixel_delta_u) + (j * pixel_delta_v);
     point3 pixel_sample = pixel_center + pixel_sample_square();
 
-    vector3 ray_direction = pixel_center - sce.cameraPosition;
+    vector3 ray_direction = pixel_sample - sce.cameraPosition;
     return ray(sce.cameraPosition, ray_direction);
 }
 
-color3 engine::ray_color(const ray &r) const
+color3 engine::ray_color(const ray &r, int depth) const
 {
+    if (depth <= 0)
+        return color3(0, 0, 0);
     hit_record rec;
-    if (sce.hit(r, interval(0, infinity), rec))
+    if (sce.hit(r, interval(0.001, infinity), rec))
     {
-        return color3(0.5 * (rec.normal + vector3(1, 1, 1)));
+        ray scattered;
+        color3 attenuation;
+        if (rec.mat->scatter(r, rec, attenuation, scattered))
+        {
+            return attenuation * ray_color(scattered, depth - 1);
+        }
+        return color3(0, 0, 0);
     }
     vector3 unit_direction = unit_vector(r.direction());
     double a = 0.5 * (unit_direction.y() + 1.0);
@@ -58,7 +66,7 @@ void engine::render()
             for (int sample = 0; sample < cam.samples_per_pixel; sample++)
             {
                 ray r = get_ray(i, j);
-                pixcol += ray_color(r);
+                pixcol += ray_color(r, cam.max_depth);
             }
 
             img.at<cv::Vec3b>(cv::Point(i, j)) = pixcol.to_cvColor(cam.samples_per_pixel);
@@ -66,5 +74,6 @@ void engine::render()
     }
 
     cv::imshow("test", img);
+    cv::imwrite("../results/scene2.png", img);
     cv::waitKey();
 }

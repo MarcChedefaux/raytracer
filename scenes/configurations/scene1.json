@@ -12,7 +12,15 @@
                     "y":0,
                     "z":-1
                 },
-            "radius":0.5
+            "radius":0.5,
+            "material": {
+                "type":"lambertian",
+                "albedo":{
+                    "r":0.8,
+                    "g":0.8,
+                    "b":0.0
+                }
+            }
         },
         {
             "type":"sphere",
@@ -21,7 +29,15 @@
                     "y":-100.5,
                     "z":-1
                 },
-            "radius":100
+            "radius":100,
+            "material": {
+                "type":"lambertian",
+                "albedo":{
+                    "r":0.8,
+                    "g":0.8,
+                    "b":0.0
+                }
+            }
         }
     ]
 }

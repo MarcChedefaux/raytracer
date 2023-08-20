@@ -3,6 +3,7 @@
 
 #include <iostream>
 #include <cmath>
+#include <random>
 
 class vector3
 {
@@ -27,6 +28,14 @@ public:
 
     double length();
     double lengthSquarred();
+
+    bool near_zero() const;
+
+    static vector3 random();
+    static vector3 random(double min, double max);
+    static vector3 random_in_unit_sphere();
+    static vector3 random_unit_vector();
+    static vector3 random_on_hemisphere(const vector3 &normal);
 };
 
 extern std::ostream &operator<<(std::ostream &out, const vector3 &v);
@@ -39,6 +48,7 @@ extern vector3 operator/(vector3 v, double t);
 extern double dot(const vector3 &u, const vector3 &v);
 extern vector3 cross(const vector3 &u, const vector3 &v);
 extern vector3 unit_vector(vector3 v);
+extern vector3 reflect(const vector3 &v, const vector3 &n);
 
 using point3 = vector3;
 

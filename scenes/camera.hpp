@@ -18,6 +18,7 @@ public:
     double viewport_width;
     double viewport_ratio;
     int samples_per_pixel;
+    int max_depth;
 
     camera();
 

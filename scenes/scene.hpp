@@ -1,9 +1,12 @@
 #ifndef SCENE
 #define SCENE
 
-#include "../hitObject/hitObject.hpp"
 #include "../utils/common.hpp"
+#include "../hitObject/hitObject.hpp"
 #include "../hitObject/sphere.hpp"
+#include "../material/material.hpp"
+#include "../material/lambertian.hpp"
+#include "../material/metal.hpp"
 
 #include <json.hpp>
 #include <memory>
