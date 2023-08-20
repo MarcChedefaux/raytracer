@@ -1,32 +1,23 @@
-#include <opencv4/opencv2/opencv.hpp>
-#include <tqdm.hpp>
+#include <opencv2/opencv.hpp>
 #include <iostream>
-#include <unistd.h>
+#include <tqdm.hpp>
+#include "color3.hpp"
+#include "vector3.hpp"
 
 int main() {
     std::cout << "Hello World" << std::endl;
     
 
     int image_width = 500, image_height = 500;
-    
+
     cv::Mat img(image_width, image_height,CV_8UC3);
 
     for (int i : tq::trange(image_width)) {
         for (int j = 0; j<image_height; j++) {
             
-            auto r = double(i) / (image_width-1);
-            auto g = double(j) / (image_height-1);
-            auto b = 0;
+            color3 col(double(i) / (image_width-1),double(j) / (image_height-1),0);
 
-            short ir = static_cast<short>(255.999 * r);
-            short ig = static_cast<short>(255.999 * g);
-            short ib = static_cast<short>(255.999 * b);
-
-            cv::Vec3b &color = img.at<cv::Vec3b>(cv::Point(i,j));
-            color[1] = ig;
-            color[2] = ir;
-
-            
+            img.at<cv::Vec3b>(cv::Point(i,j)) = col.to_cvColor();            
         }
     }
     

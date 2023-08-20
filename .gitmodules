@@ -1,6 +1,0 @@
-[submodule "tqdm-cpp"]
-	path = tqdm-cpp
-	url = https://github.com/mraggi/tqdm-cpp.git
-[submodule "json"]
-	path = json
-	url = https://github.com/nlohmann/json.git
