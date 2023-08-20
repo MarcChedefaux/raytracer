@@ -19,7 +19,9 @@ private:
     vector3 pixel_delta_u;
     vector3 pixel_delta_v;
 
-    color3 ray_color(const ray &r);
+    point3 pixel_sample_square() const;
+    ray get_ray(int i, int j) const;
+    color3 ray_color(const ray &r) const;
 
 public:
     engine(camera c, scene s);

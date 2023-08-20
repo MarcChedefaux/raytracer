@@ -6,25 +6,23 @@ engine::engine(camera c, scene s)
     sce = s;
 }
 
-double hit_sphere(const point3 &center, double radius, const ray &r)
+point3 engine::pixel_sample_square() const
 {
-    vector3 oc = r.origin() - center;
-    double a = r.direction().lengthSquarred();
-    double half_b = dot(oc, r.direction());
-    double c = oc.lengthSquarred() - radius * radius;
-    double discriminant = half_b * half_b - a * c;
-
-    if (discriminant < 0)
-    {
-        return -1.0;
-    }
-    else
-    {
-        return (-half_b - sqrt(discriminant)) / a;
-    }
+    double px = -0.5 + random_double();
+    double py = -0.5 + random_double();
+    return (px * pixel_delta_u) + (py * pixel_delta_v);
 }
 
-color3 engine::ray_color(const ray &r)
+ray engine::get_ray(int i, int j) const
+{
+    point3 pixel_center = pixel00_loc + (i * pixel_delta_u) + (j * pixel_delta_v);
+    point3 pixel_sample = pixel_center + pixel_sample_square();
+
+    vector3 ray_direction = pixel_center - sce.cameraPosition;
+    return ray(sce.cameraPosition, ray_direction);
+}
+
+color3 engine::ray_color(const ray &r) const
 {
     hit_record rec;
     if (sce.hit(r, interval(0, infinity), rec))
@@ -56,13 +54,14 @@ void engine::render()
     {
         for (int j = 0; j < cam.image_height; j++)
         {
-            point3 pixel_center = pixel00_loc + (i * pixel_delta_u) + (j * pixel_delta_v);
-            vector3 ray_direction = pixel_center - sce.cameraPosition;
-            ray r(sce.cameraPosition, ray_direction);
+            color3 pixcol(0, 0, 0);
+            for (int sample = 0; sample < cam.samples_per_pixel; sample++)
+            {
+                ray r = get_ray(i, j);
+                pixcol += ray_color(r);
+            }
 
-            color3 col = ray_color(r);
-
-            img.at<cv::Vec3b>(cv::Point(i, j)) = col.to_cvColor();
+            img.at<cv::Vec3b>(cv::Point(i, j)) = pixcol.to_cvColor(cam.samples_per_pixel);
         }
     }
 
