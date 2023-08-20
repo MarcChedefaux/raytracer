@@ -12,5 +12,6 @@ int main()
     sce.readJson("../scenes/configurations/scene1.json");
 
     engine eng(cam, sce);
+    eng.init();
     eng.render();
 }
