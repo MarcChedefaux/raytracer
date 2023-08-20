@@ -1,13 +1,16 @@
 #include <iostream>
 #include "raytracing_engine/engine.hpp"
 #include "scenes/camera.hpp"
+#include "scenes/scene.hpp"
 
 int main()
 {
     camera cam;
     cam.readJson("../scenes/configurations/camera.json");
-    std::cout << cam << std::endl;
 
-    engine eng(cam);
+    scene sce;
+    sce.readJson("../scenes/configurations/scene1.json");
+
+    engine eng(cam, sce);
     eng.render();
 }

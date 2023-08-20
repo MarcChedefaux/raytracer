@@ -1,0 +1,27 @@
+{
+    "cameraPosition": {
+        "x":0,
+        "y":0,
+        "z":0
+    },
+    "objects":[
+        {
+            "type":"sphere",
+            "center":{
+                    "x":0,
+                    "y":0,
+                    "z":-1
+                },
+            "radius":0.5
+        },
+        {
+            "type":"sphere",
+            "center":{
+                    "x":0,
+                    "y":-100.5,
+                    "z":-1
+                },
+            "radius":100
+        }
+    ]
+}

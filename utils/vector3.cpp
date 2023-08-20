@@ -16,7 +16,7 @@ double vector3::z() const
     return e[2];
 }
 
-vector3 vector3::operator-()
+vector3 vector3::operator-() const
 {
     return vector3(-e[0], -e[1], -e[2]);
 }

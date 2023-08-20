@@ -16,7 +16,7 @@ public:
     double y() const;
     double z() const;
 
-    vector3 operator-();
+    vector3 operator-() const;
     double operator[](int i);
 
     vector3 &operator+=(const vector3 &v);

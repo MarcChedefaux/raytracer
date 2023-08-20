@@ -1,8 +1,9 @@
 #include "engine.hpp"
 
-engine::engine(camera c)
+engine::engine(camera c, scene s)
 {
     cam = c;
+    sce = s;
 }
 
 double hit_sphere(const point3 &center, double radius, const ray &r)
@@ -23,13 +24,12 @@ double hit_sphere(const point3 &center, double radius, const ray &r)
     }
 }
 
-color3 ray_color(const ray &r)
+color3 engine::ray_color(const ray &r)
 {
-    double t = hit_sphere(point3(0, 0, -1), 0.5, r);
-    if (t > 0.0)
+    hit_record rec;
+    if (sce.hit(r, 0, infinity, rec))
     {
-        vector3 N = unit_vector(r.at(t) - vector3(0, 0, -1));
-        return color3(0.5 * color3(N.x() + 1, N.y() + 1, N.z() + 1));
+        return color3(0.5 * (rec.normal + vector3(1, 1, 1)));
     }
     vector3 unit_direction = unit_vector(r.direction());
     double a = 0.5 * (unit_direction.y() + 1.0);

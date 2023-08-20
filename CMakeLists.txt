@@ -8,6 +8,15 @@ find_package( OpenCV REQUIRED )
 
 include_directories( ${OpenCV_INCLUDE_DIRS} ./submodules/)
 
-add_executable( raytracer main.cpp utils/color3.cpp utils/vector3.cpp raytracing_engine/ray.cpp scenes/camera.cpp raytracing_engine/engine.cpp)
+add_executable( raytracer 
+main.cpp
+utils/color3.cpp
+utils/vector3.cpp
+scenes/camera.cpp 
+scenes/scene.cpp 
+hitObject/hitObject.cpp
+hitObject/sphere.cpp
+raytracing_engine/ray.cpp
+raytracing_engine/engine.cpp)
 
 target_link_libraries( raytracer ${OpenCV_LIBS} )
