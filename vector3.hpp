@@ -4,31 +4,32 @@
 #include <iostream>
 #include <cmath>
 
-class vector3 {
-    public :
-        double e[3];
+class vector3
+{
+public:
+    double e[3];
 
-        vector3();
-        vector3(double e1, double e2, double e3);
+    vector3();
+    vector3(double e1, double e2, double e3);
 
-        double x();
-        double y();
-        double z();
+    double x();
+    double y();
+    double z();
 
-        vector3 operator-();
-        double operator[](int i);
+    vector3 operator-();
+    double operator[](int i);
 
-        vector3& operator+=(const vector3 &v);
+    vector3 &operator+=(const vector3 &v);
 
-        vector3& operator*=(double t);
+    vector3 &operator*=(double t);
 
-        vector3& operator/=(double t);
+    vector3 &operator/=(double t);
 
-        double length();
-        double lengthSquarred();
+    double length();
+    double lengthSquarred();
 };
 
-extern std::ostream& operator<<(std::ostream &out, const vector3 &v);
+extern std::ostream &operator<<(std::ostream &out, const vector3 &v);
 extern vector3 operator+(const vector3 &u, const vector3 &v);
 extern vector3 operator-(const vector3 &u, const vector3 &v);
 extern vector3 operator*(const vector3 &u, const vector3 &v);
@@ -38,7 +39,6 @@ extern vector3 operator/(vector3 v, double t);
 extern double dot(const vector3 &u, const vector3 &v);
 extern vector3 cross(const vector3 &u, const vector3 &v);
 extern vector3 unit_vector(vector3 v);
-
 
 using point3 = vector3;
 

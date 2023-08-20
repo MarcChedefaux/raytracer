@@ -1,12 +1,13 @@
 #include "color3.hpp"
 
-color3::color3() : vector3(){}
-color3::color3(double c1, double c2, double c3) : vector3(c1,c2,c3){}
+color3::color3() : vector3() {}
+color3::color3(double c1, double c2, double c3) : vector3(c1, c2, c3) {}
 
-cv::Vec3b color3::to_cvColor() {
+cv::Vec3b color3::to_cvColor()
+{
     short ir = static_cast<short>(255.999 * e[0]);
     short ig = static_cast<short>(255.999 * e[1]);
     short ib = static_cast<short>(255.999 * e[2]);
 
-    return cv::Vec3b(ib,ig,ir);
+    return cv::Vec3b(ib, ig, ir);
 }
