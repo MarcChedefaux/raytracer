@@ -17,4 +17,8 @@ inline double degrees_to_radians(double degrees)
     return degrees * pi / 180.0;
 }
 
+#include "interval.hpp"
+#include "../raytracing_engine/ray.hpp"
+#include "vector3.hpp"
+
 #endif

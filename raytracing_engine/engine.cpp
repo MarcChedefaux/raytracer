@@ -27,7 +27,7 @@ double hit_sphere(const point3 &center, double radius, const ray &r)
 color3 engine::ray_color(const ray &r)
 {
     hit_record rec;
-    if (sce.hit(r, 0, infinity, rec))
+    if (sce.hit(r, interval(0, infinity), rec))
     {
         return color3(0.5 * (rec.normal + vector3(1, 1, 1)));
     }

@@ -2,7 +2,7 @@
 
 sphere::sphere(point3 c, double r) : center(c), radius(r) {}
 
-bool sphere::hit(const ray &r, double ray_tmin, double ray_tmax, hit_record &rec) const
+bool sphere::hit(const ray &r, interval ray_t, hit_record &rec) const
 {
     vector3 oc = r.origin() - center;
     auto a = r.direction().lengthSquarred();
@@ -16,10 +16,10 @@ bool sphere::hit(const ray &r, double ray_tmin, double ray_tmax, hit_record &rec
 
     // Find the nearest root that lies in the acceptable range.
     auto root = (-half_b - sqrtd) / a;
-    if (root <= ray_tmin || ray_tmax <= root)
+    if (!ray_t.surrounds(root))
     {
         root = (-half_b + sqrtd) / a;
-        if (root <= ray_tmin || ray_tmax <= root)
+        if (!ray_t.surrounds(root))
             return false;
     }
 

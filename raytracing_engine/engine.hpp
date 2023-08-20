@@ -5,7 +5,6 @@
 #include <tqdm.hpp>
 #include "../scenes/camera.hpp"
 #include "../scenes/scene.hpp"
-#include "../utils/vector3.hpp"
 #include "../utils/color3.hpp"
 #include "../utils/common.hpp"
 #include "ray.hpp"

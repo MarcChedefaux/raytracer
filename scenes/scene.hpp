@@ -2,7 +2,7 @@
 #define SCENE
 
 #include "../hitObject/hitObject.hpp"
-#include "../utils/vector3.hpp"
+#include "../utils/common.hpp"
 #include "../hitObject/sphere.hpp"
 
 #include <json.hpp>
@@ -26,7 +26,7 @@ public:
     void clear();
     void add(shared_ptr<hitObject> object);
 
-    bool hit(const ray &r, double ray_tmin, double ray_tmax, hit_record &rec) const;
+    bool hit(const ray &r, interval ray_t, hit_record &rec) const;
 
     void readJson(std::string filePath);
 };

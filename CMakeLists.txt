@@ -12,6 +12,7 @@ add_executable( raytracer
 main.cpp
 utils/color3.cpp
 utils/vector3.cpp
+utils/interval.cpp
 scenes/camera.cpp 
 scenes/scene.cpp 
 hitObject/hitObject.cpp

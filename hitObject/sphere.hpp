@@ -2,7 +2,6 @@
 #define SPHERE
 
 #include "hitObject.hpp"
-#include "../utils/vector3.hpp"
 
 class sphere : public hitObject
 {
@@ -13,7 +12,7 @@ private:
 public:
     sphere(point3 c, double r);
 
-    bool hit(const ray &r, double ray_tmin, double ray_tmax, hit_record &rec) const;
+    bool hit(const ray &r, interval ray_t, hit_record &rec) const;
 };
 
 #endif
