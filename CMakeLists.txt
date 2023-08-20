@@ -6,7 +6,7 @@ project( raytracer )
 
 find_package( OpenCV REQUIRED )
 
-include_directories( ${OpenCV_INCLUDE_DIRS} ./tqdm-cpp/ ./json/single_include/)
+include_directories( ${OpenCV_INCLUDE_DIRS} ./submodules/tqdm-cpp/ ./submodules/json/single_include/)
 
 add_executable( raytracer main.cpp )
 
