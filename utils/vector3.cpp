@@ -174,3 +174,11 @@ vector3 reflect(const vector3 &v, const vector3 &n)
 {
     return v - 2 * dot(v, n) * n;
 }
+
+vector3 refract(const vector3 &uv, const vector3 &n, double etai_over_etat)
+{
+    double cos_theta = fmin(dot(-uv, n), 1.0);
+    vector3 out_perp = etai_over_etat * (uv + cos_theta * n);
+    vector3 out_para = -sqrt(fabs(1.0 - out_perp.lengthSquarred())) * n;
+    return out_para + out_perp;
+}

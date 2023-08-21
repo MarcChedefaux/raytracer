@@ -1,0 +1,74 @@
+{
+    "cameraPosition": {
+        "x":0,
+        "y":0,
+        "z":0
+    },
+    "objects":[
+        {
+            "type":"sphere",
+            "center":{
+                    "x":0,
+                    "y":-100.5,
+                    "z":-1
+                },
+            "radius":100,
+            "material": {
+                "type":"lambertian",
+                "albedo":{
+                    "r":0.8,
+                    "g":0.8,
+                    "b":0.0
+                }
+            }
+        },
+        {
+            "type":"sphere",
+            "center":{
+                    "x":0,
+                    "y":0,
+                    "z":-1
+                },
+            "radius":0.5,
+            "material": {
+                "type":"lambertian",
+                "albedo":{
+                    "r":0.7,
+                    "g":0.3,
+                    "b":0.3
+                }
+            }
+        },
+        {
+            "type":"sphere",
+            "center":{
+                    "x":-1,
+                    "y":0,
+                    "z":-1
+                },
+            "radius":0.5,
+            "material": {
+                "type":"metal",
+                "albedo":{
+                    "r":0.8,
+                    "g":0.8,
+                    "b":0.8
+                },
+                "fuzz":0.0
+            }
+        },
+        {
+            "type":"sphere",
+            "center":{
+                    "x":1,
+                    "y":0,
+                    "z":-1
+                },
+            "radius":-0.5,
+            "material": {
+                "type":"dielectric",
+                "refraction":1.4
+            }
+        }
+    ]
+}

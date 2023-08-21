@@ -59,6 +59,10 @@ void scene::readJson(std::string filePath)
             double fuzz = materialInfo["fuzz"];
             mat = make_shared<metal>(albedo, fuzz);
         }
+        if (materialInfo["type"] == "dielectric")
+        {
+            mat = make_shared<dielectric>(materialInfo["refraction"]);
+        }
 
         if (obj["type"] == "sphere")
         {

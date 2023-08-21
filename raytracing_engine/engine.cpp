@@ -74,6 +74,6 @@ void engine::render()
     }
 
     cv::imshow("test", img);
-    cv::imwrite("../results/scene2.png", img);
+    cv::imwrite("../results/scene3.png", img);
     cv::waitKey();
 }

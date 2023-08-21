@@ -7,6 +7,7 @@
 #include "../material/material.hpp"
 #include "../material/lambertian.hpp"
 #include "../material/metal.hpp"
+#include "../material/dielectric.hpp"
 
 #include <json.hpp>
 #include <memory>

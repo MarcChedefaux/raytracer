@@ -9,7 +9,7 @@ int main()
     cam.readJson("../scenes/configurations/camera.json");
 
     scene sce;
-    sce.readJson("../scenes/configurations/scene2.json");
+    sce.readJson("../scenes/configurations/scene3.json");
 
     engine eng(cam, sce);
     eng.init();
