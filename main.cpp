@@ -8,10 +8,10 @@ int main()
     camera cam;
     cam.readJson("../scenes/configurations/camera.json");
 
-    scene sce;
+    scene sce(cam);
     sce.readJson("../scenes/configurations/scene3.json");
 
-    engine eng(cam, sce);
+    engine eng(sce);
     eng.init();
     eng.render();
 }

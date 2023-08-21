@@ -115,6 +115,16 @@ vector3 vector3::random_on_hemisphere(const vector3 &normal)
     }
 }
 
+vector3 vector3::random_in_unit_disk()
+{
+    while (true)
+    {
+        auto p = vector3(random_double(-1, 1), random_double(-1, 1), 0);
+        if (p.lengthSquarred() < 1)
+            return p;
+    }
+}
+
 //-----------------------------------------------------------------
 
 std::ostream &

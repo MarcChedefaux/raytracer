@@ -5,6 +5,12 @@ scene::scene()
     objects = std::vector<shared_ptr<hitObject>>();
 }
 
+scene::scene(camera c)
+{
+    cam = c;
+    objects = std::vector<shared_ptr<hitObject>>();
+}
+
 void scene::clear()
 {
     objects.clear();
@@ -40,7 +46,23 @@ void scene::readJson(std::string filePath)
     json data = json::parse(fileCam);
 
     json camPos = data["cameraPosition"];
-    cameraPosition = point3(camPos["x"], camPos["y"], camPos["z"]);
+    cam.lookFrom = vector3(camPos["lookFrom"]["x"], camPos["lookFrom"]["y"], camPos["lookFrom"]["z"]);
+    cam.lookAt = vector3(camPos["lookAt"]["x"], camPos["lookAt"]["y"], camPos["lookAt"]["z"]);
+    cam.vfov = camPos["vfov"];
+    cam.defocus_angle = camPos["defocus_angle"];
+    if (camPos.contains("focus_dist"))
+    {
+        cam.focus_dist = camPos["focus_dist"];
+    }
+    else
+    {
+        cam.focus_dist = (cam.lookFrom - cam.lookAt).length();
+    }
+
+    double theta = degrees_to_radians(cam.vfov);
+    double h = tan(theta / 2);
+    cam.viewport_height = 2 * h * cam.focus_dist;
+    cam.viewport_width = cam.viewport_height * (static_cast<double>(cam.image_width) / cam.image_height);
 
     json objects = data["objects"];
     for (json::iterator it = objects.begin(); it != objects.end(); it++)

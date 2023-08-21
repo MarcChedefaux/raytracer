@@ -8,6 +8,7 @@
 #include "../material/lambertian.hpp"
 #include "../material/metal.hpp"
 #include "../material/dielectric.hpp"
+#include "camera.hpp"
 
 #include <json.hpp>
 #include <memory>
@@ -22,10 +23,11 @@ using std::shared_ptr;
 class scene
 {
 public:
-    point3 cameraPosition;
+    camera cam;
     std::vector<shared_ptr<hitObject>> objects;
 
     scene();
+    scene(camera c);
 
     void clear();
     void add(shared_ptr<hitObject> object);

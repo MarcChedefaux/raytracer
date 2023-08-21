@@ -4,6 +4,7 @@
 #include <json.hpp>
 #include <iostream>
 #include <fstream>
+#include "../utils/common.hpp"
 
 using json = nlohmann::json;
 
@@ -13,12 +14,17 @@ public:
     int image_width;
     int image_height;
     double aspect_ratio;
-    double focal_length;
     double viewport_height;
     double viewport_width;
     double viewport_ratio;
     int samples_per_pixel;
     int max_depth;
+    double vfov;
+    double focus_dist;
+    double defocus_angle;
+
+    vector3 lookFrom;
+    vector3 lookAt;
 
     camera();
 
