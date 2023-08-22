@@ -8,6 +8,7 @@
 #include "../material/lambertian.hpp"
 #include "../material/metal.hpp"
 #include "../material/dielectric.hpp"
+#include "../material/light.hpp"
 #include "camera.hpp"
 
 #include <json.hpp>

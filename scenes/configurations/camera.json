@@ -2,6 +2,6 @@
     "image_width": 400,
     "aspect_ratio_w":16,
     "aspect_ratio_h":9,
-    "samples_per_pixel":200,
+    "samples_per_pixel":300,
     "max_depth": 50
 }

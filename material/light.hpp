@@ -1,15 +1,16 @@
-#ifndef LAMBERTIAN
-#define LAMBERTIAN
+#ifndef LIGHT
+#define LIGHT
 
 #include "material.hpp"
 
-class lambertian : public material
+class light : public material
 {
 private:
     color3 albedo;
+    double intensity;
 
 public:
-    lambertian(const color3 &a);
+    light(const color3 &a, double i);
 
     bool scatter(const ray &r_in, hit_record &rec, color3 &attenuation, ray &scattered) const;
 };

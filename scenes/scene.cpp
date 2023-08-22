@@ -85,6 +85,12 @@ void scene::readJson(std::string filePath)
         {
             mat = make_shared<dielectric>(materialInfo["refraction"]);
         }
+        if (materialInfo["type"] == "light")
+        {
+            color3 albedo(materialInfo["albedo"]["r"], materialInfo["albedo"]["g"], materialInfo["albedo"]["b"]);
+            double intensity = materialInfo["intensity"];
+            mat = make_shared<light>(albedo, intensity);
+        }
 
         if (obj["type"] == "sphere")
         {

@@ -13,6 +13,7 @@ public:
     shared_ptr<material> mat;
     double t;
     bool front_face;
+    bool isLighting;
 
     void set_face_normal(const ray &r, const vector3 &outward_normal);
 };

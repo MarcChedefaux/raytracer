@@ -20,6 +20,11 @@ cv::Vec3b color3::to_cvColor(int numberOfSamples)
     g *= scale;
     b *= scale;
 
+    interval i(0, 1);
+    r = i.clamp(r);
+    g = i.clamp(g);
+    b = i.clamp(b);
+
     r = linear_to_gamma(r);
     g = linear_to_gamma(g);
     b = linear_to_gamma(b);

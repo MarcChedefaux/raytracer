@@ -2,7 +2,7 @@
 
 lambertian::lambertian(const color3 &a) : albedo(a) {}
 
-bool lambertian::scatter(const ray &r_in, const hit_record &rec, color3 &attenuation, ray &scattered) const
+bool lambertian::scatter(const ray &r_in, hit_record &rec, color3 &attenuation, ray &scattered) const
 {
     vector3 scatter_direction = rec.normal + vector3::random_unit_vector();
     if (scatter_direction.near_zero())

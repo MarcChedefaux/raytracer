@@ -42,11 +42,16 @@ color3 engine::ray_color(const ray &r, int depth) const
         {
             return attenuation * ray_color(scattered, depth - 1);
         }
-        return color3(0, 0, 0);
+        if (rec.isLighting)
+        {
+            return attenuation;
+        }
+        else
+        {
+            return color3(0, 0, 0);
+        }
     }
-    vector3 unit_direction = unit_vector(r.direction());
-    double a = 0.5 * (unit_direction.y() + 1.0);
-    return color3((1.0 - a) * color3(1.0, 1.0, 1.0) + a * color3(0.5, 0.7, 1.0));
+    return color3(0, 0, 0);
 }
 
 void engine::init()

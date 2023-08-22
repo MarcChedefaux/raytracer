@@ -12,7 +12,7 @@ private:
 
 public:
     dielectric(double index_of_refraction);
-    bool scatter(const ray &r_in, const hit_record &rec, color3 &attenuation, ray &scattered) const;
+    bool scatter(const ray &r_in, hit_record &rec, color3 &attenuation, ray &scattered) const;
 };
 
 #endif

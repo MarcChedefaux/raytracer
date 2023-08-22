@@ -2,6 +2,7 @@
 #define COLOR3
 
 #include "vector3.hpp"
+#include "common.hpp"
 #include <opencv2/opencv.hpp>
 
 class color3 : public vector3

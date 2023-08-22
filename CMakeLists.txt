@@ -18,6 +18,7 @@ scenes/scene.cpp
 material/lambertian.cpp
 material/metal.cpp
 material/dielectric.cpp
+material/light.cpp
 hitObject/hitObject.cpp
 hitObject/sphere.cpp
 raytracing_engine/ray.cpp

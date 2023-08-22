@@ -9,7 +9,7 @@ double dielectric::reflectance(double cosine, double ref_idx)
     return r0 + (1 - r0) * pow((1 - cosine), 5);
 }
 
-bool dielectric::scatter(const ray &r_in, const hit_record &rec, color3 &attenuation, ray &scattered) const
+bool dielectric::scatter(const ray &r_in, hit_record &rec, color3 &attenuation, ray &scattered) const
 {
     attenuation = color3(1, 1, 1);
     double refraction_ratio = rec.front_face ? 1.0 / ior : ior;
