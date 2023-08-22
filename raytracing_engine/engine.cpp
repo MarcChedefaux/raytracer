@@ -92,6 +92,8 @@ void engine::render()
 
             img.at<cv::Vec3b>(cv::Point(i, j)) = pixcol.to_cvColor(cam.samples_per_pixel);
         }
+        cv::imshow("test", img);
+        cv::waitKey(1);
     }
 
     cv::imshow("test", img);
