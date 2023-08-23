@@ -4,6 +4,7 @@
 #include <iostream>
 #include <cmath>
 #include <random>
+#include <chrono>
 
 class vector3
 {

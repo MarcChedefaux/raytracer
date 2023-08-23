@@ -66,7 +66,8 @@ bool vector3::near_zero() const
 double random_double()
 {
     static std::uniform_real_distribution<double> distribution(0.0, 1.0);
-    static std::mt19937 generator;
+    static unsigned seed = std::chrono::system_clock::now().time_since_epoch().count();
+    static std::mt19937 generator(seed);
     return distribution(generator);
 }
 

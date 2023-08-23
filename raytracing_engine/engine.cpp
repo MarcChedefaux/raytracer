@@ -75,11 +75,11 @@ void engine::init()
     defocus_disk_v = v * defocus_radius;
 }
 
-void engine::render()
+cv::Mat engine::render(unsigned long &current)
 {
     cv::Mat img(cam.image_height, cam.image_width, CV_8UC3);
 
-    for (int i : tq::trange(cam.image_width))
+    for (int i = 0; i < cam.image_width; i++)
     {
         for (int j = 0; j < cam.image_height; j++)
         {
@@ -91,12 +91,8 @@ void engine::render()
             }
 
             img.at<cv::Vec3b>(cv::Point(i, j)) = pixcol.to_cvColor(cam.samples_per_pixel);
+            current++;
         }
-        cv::imshow("test", img);
-        cv::waitKey(1);
     }
-
-    cv::imshow("test", img);
-    cv::imwrite("../results/scene3.png", img);
-    cv::waitKey();
+    return img;
 }

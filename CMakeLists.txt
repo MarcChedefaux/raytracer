@@ -6,6 +6,8 @@ project( raytracer )
 
 find_package( OpenCV REQUIRED )
 
+find_package(Threads REQUIRED)
+
 include_directories( ${OpenCV_INCLUDE_DIRS} ./submodules/)
 
 add_executable( raytracer 
@@ -24,4 +26,4 @@ hitObject/sphere.cpp
 raytracing_engine/ray.cpp
 raytracing_engine/engine.cpp)
 
-target_link_libraries( raytracer ${OpenCV_LIBS} )
+target_link_libraries( raytracer ${OpenCV_LIBS} Threads::Threads)

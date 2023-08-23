@@ -32,6 +32,7 @@ void camera::readJson(std::string filePath)
 
     samples_per_pixel = data["samples_per_pixel"];
     max_depth = data["max_depth"];
+    nbThread = data["nb_thread"];
 }
 
 std::ostream &operator<<(std::ostream &out, const camera &c)

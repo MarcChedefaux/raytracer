@@ -19,6 +19,7 @@ public:
     double viewport_ratio;
     int samples_per_pixel;
     int max_depth;
+    int nbThread;
     double vfov;
     double focus_dist;
     double defocus_angle;

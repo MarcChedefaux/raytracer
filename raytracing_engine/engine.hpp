@@ -30,7 +30,7 @@ public:
     engine(scene s);
 
     void init();
-    void render();
+    cv::Mat render(unsigned long &range);
 };
 
 #endif
