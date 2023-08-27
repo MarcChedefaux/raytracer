@@ -23,6 +23,7 @@ material/dielectric.cpp
 material/light.cpp
 hitObject/hitObject.cpp
 hitObject/sphere.cpp
+hitObject/plane.cpp
 raytracing_engine/ray.cpp
 raytracing_engine/engine.cpp)
 

@@ -46,12 +46,12 @@ vector3 &vector3::operator/=(double t)
     return *this *= 1 / t;
 }
 
-double vector3::length()
+double vector3::length() const
 {
     return sqrt(lengthSquarred());
 }
 
-double vector3::lengthSquarred()
+double vector3::lengthSquarred() const
 {
     return e[0] * e[0] + e[1] * e[1] + e[2] * e[2];
 }

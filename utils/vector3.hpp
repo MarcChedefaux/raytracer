@@ -27,8 +27,8 @@ public:
 
     vector3 &operator/=(double t);
 
-    double length();
-    double lengthSquarred();
+    double length() const;
+    double lengthSquarred() const;
 
     bool near_zero() const;
 

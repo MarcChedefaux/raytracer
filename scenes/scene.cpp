@@ -100,5 +100,16 @@ void scene::readJson(std::string filePath)
 
             add(make_shared<sphere>(sphCenter, sphRadius, mat));
         }
+
+        if (obj["type"] == "plane")
+        {
+            json objPos = obj["bottomLeft"];
+            point3 planeBottomLeft(objPos["x"], objPos["y"], objPos["z"]);
+
+            objPos = obj["upperRight"];
+            point3 planeUpperRight(objPos["x"], objPos["y"], objPos["z"]);
+
+            add(make_shared<plane>(planeBottomLeft, planeUpperRight, mat));
+        }
     }
 }
