@@ -24,9 +24,9 @@ void oneThreadFunction()
 int main()
 {
 
-    sce.cam.readJson("../scenes/configurations/camera_high.json");
+    sce.cam.readJson("../scenes/configurations/camera_low.json");
 
-    sce.readJson("../scenes/configurations/scene4.json");
+    sce.readJson("../scenes/configurations/scene5.json");
 
     int nbThread = sce.cam.nbThread;
     std::vector<std::thread> threads;
@@ -61,6 +61,6 @@ int main()
         }
     }
     cv::imshow("image finale", img);
-    cv::imwrite("../results/scene4.png", img);
+    cv::imwrite("../results/scene5.png", img);
     cv::waitKey(0);
 }

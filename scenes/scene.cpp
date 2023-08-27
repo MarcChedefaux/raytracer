@@ -111,5 +111,18 @@ void scene::readJson(std::string filePath)
 
             add(make_shared<plane>(planeBottomLeft, planeUpperRight, mat));
         }
+        if (obj["type"] == "triangle")
+        {
+            json objPos = obj["p0"];
+            point3 plane0(objPos["x"], objPos["y"], objPos["z"]);
+
+            objPos = obj["p1"];
+            point3 plane1(objPos["x"], objPos["y"], objPos["z"]);
+
+            objPos = obj["p2"];
+            point3 plane2(objPos["x"], objPos["y"], objPos["z"]);
+
+            add(make_shared<triangle>(plane0, plane1, plane2, mat));
+        }
     }
 }

@@ -5,6 +5,7 @@
 #include "../hitObject/hitObject.hpp"
 #include "../hitObject/sphere.hpp"
 #include "../hitObject/plane.hpp"
+#include "../hitObject/triangle.hpp"
 #include "../material/material.hpp"
 #include "../material/lambertian.hpp"
 #include "../material/metal.hpp"
