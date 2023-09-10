@@ -4,14 +4,23 @@ triangle::triangle(point3 p0, point3 p1, point3 p2, shared_ptr<material> m) : p0
 {
     u = p1 - p0;
     v = p2 - p0;
-    normal = unit_vector(cross(u, v));
+    n1 = unit_vector(cross(u, v));
+    n2 = n1;
+    n3 = n1;
+    normal = n1;
 }
 
-triangle::triangle(point3 p0, point3 p1, point3 p2, vector3 normal, shared_ptr<material> m) : p0(p0), mat(m)
+triangle::triangle(point3 p0, point3 p1, point3 p2, vector3 normal, shared_ptr<material> m) : p0(p0), mat(m), normal(normal), n1(normal), n2(normal), n3(normal)
 {
     u = p1 - p0;
     v = p2 - p0;
-    this->normal = unit_vector(normal);
+}
+
+triangle::triangle(point3 p0, point3 p1, point3 p2, vector3 n1, vector3 n2, vector3 n3, shared_ptr<material> m) : p0(p0), mat(m), n1(n1), n2(n2), n3(n3)
+{
+    u = p1 - p0;
+    v = p2 - p0;
+    normal = unit_vector(cross(u, v));
 }
 
 bool triangle::hit(const ray &r, interval ray_t, hit_record &rec) const
@@ -43,9 +52,16 @@ bool triangle::hit(const ray &r, interval ray_t, hit_record &rec) const
         if (dot(normal, C) < 0)
             return false; // P is on the right side;
 
+        vector3 intersection = pos - p0;
+        int factorX = dot(intersection, u);
+        int factorY = dot(intersection, v);
+
+        vector3 noInterpolated = (1 - factorX - factorY) * n1 + factorX * n2 + factorY * n3;
+        noInterpolated = unit_vector(noInterpolated);
+
         rec.t = a;
         rec.p = pos;
-        rec.set_face_normal(r, normal);
+        rec.set_face_normal(r, noInterpolated);
         rec.mat = mat;
         rec.isLighting = false;
         return true; // this ray hits the triangle
