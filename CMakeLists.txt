@@ -25,6 +25,7 @@ hitObject/hitObject.cpp
 hitObject/sphere.cpp
 hitObject/plane.cpp
 hitObject/triangle.cpp
+hitObject/mesh.cpp
 raytracing_engine/ray.cpp
 raytracing_engine/engine.cpp)
 

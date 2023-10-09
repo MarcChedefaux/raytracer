@@ -124,5 +124,16 @@ void scene::readJson(std::string filePath)
 
             add(make_shared<triangle>(plane0, plane1, plane2, mat));
         }
+
+        if (obj["type"] == "mesh")
+        {
+            std::string filepathObj = obj["objPath"];
+            float multiplicator = obj["scale"];
+
+            json objPos = obj["pos"];
+            point3 pos(objPos["x"], objPos["y"], objPos["z"]);
+
+            add(make_shared<mesh>(filepathObj, multiplicator, pos, mat));
+        }
     }
 }
